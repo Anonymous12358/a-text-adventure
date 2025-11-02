@@ -35,7 +35,11 @@ def get_instruction():
     else:
         program_counter += 1
         if program_counter >= len(instructions):
-            program_counter = instructions.index("loop")
+            if "loop" in instructions:
+                program_counter = instructions.index("loop")
+            else:
+                mode = "0"
+                return input()
         if instructions[program_counter] == "loop":
             program_counter += 1
         return instructions[program_counter]
